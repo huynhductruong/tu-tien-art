@@ -3,8 +3,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { cultivators } from "@/data/cultivation";
 import { Link } from "react-router-dom";
 import { Crown } from "lucide-react";
-import iconDharma from "@/assets/icon-dharma.png";
+import { DharmaAura } from "@/components/three/DharmaAura";
 
+const variants = ["gold", "jade", "crimson"] as const;
 const rankAura = ["from-rank-myth/30", "from-rank-legend/30", "from-rank-epic/30"];
 
 const Leaderboard = () => (

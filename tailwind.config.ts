@@ -7,12 +7,15 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      padding: "1.5rem",
+      screens: { "2xl": "1400px" },
     },
     extend: {
+      fontFamily: {
+        display: ["Cinzel", "Noto Serif", "serif"],
+        script: ["Ma Shan Zheng", "Noto Serif SC", "serif"],
+        body: ["Noto Serif", "Noto Serif SC", "serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -22,6 +25,8 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          glow: "hsl(var(--primary-glow))",
+          deep: "hsl(var(--primary-deep))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -38,6 +43,8 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          gold: "hsl(var(--accent-gold))",
+          "gold-deep": "hsl(var(--accent-gold-deep))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -46,6 +53,14 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        rank: {
+          common: "hsl(var(--rank-common))",
+          uncommon: "hsl(var(--rank-uncommon))",
+          rare: "hsl(var(--rank-rare))",
+          epic: "hsl(var(--rank-epic))",
+          legend: "hsl(var(--rank-legend))",
+          myth: "hsl(var(--rank-myth))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
@@ -58,28 +73,29 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      backgroundImage: {
+        "gradient-jade": "var(--gradient-jade)",
+        "gradient-mist": "var(--gradient-mist)",
+        "gradient-gold": "var(--gradient-gold)",
+        "gradient-celestial": "var(--gradient-celestial)",
+        "gradient-aura": "var(--gradient-aura)",
+        "gradient-scroll": "var(--gradient-scroll)",
+      },
+      boxShadow: {
+        jade: "var(--shadow-jade)",
+        gold: "var(--shadow-gold)",
+        soft: "var(--shadow-soft)",
+        aura: "var(--shadow-aura)",
+        deep: "var(--shadow-deep)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
-        },
-        "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
-        },
+        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
+        "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

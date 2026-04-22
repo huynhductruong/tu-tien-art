@@ -1,17 +1,23 @@
 import { PageLayout } from "@/components/PageLayout";
 import { SectionHeading } from "@/components/SectionHeading";
 import { RankBadge } from "@/components/RankBadge";
-import { treasures } from "@/data/cultivation";
-import iconSword from "@/assets/icon-sword.png";
-import iconBeast from "@/assets/icon-beast.png";
-import iconCauldron from "@/assets/icon-cauldron.png";
-import iconBagua from "@/assets/icon-bagua.png";
+import { treasures, type RealmRank } from "@/data/cultivation";
+import { Treasure3D, type TreasureKind } from "@/components/three/Treasure3D";
 
-const typeIcon: Record<string, string> = {
-  "Pháp Bảo": iconSword,
-  "Linh Thú": iconBeast,
-  "Đan Dược": iconCauldron,
-  "Pháp Khí": iconBagua,
+const typeKind: Record<string, TreasureKind> = {
+  "Pháp Bảo": "sword",
+  "Linh Thú": "beast",
+  "Đan Dược": "pill",
+  "Pháp Khí": "bagua",
+};
+
+const rankColor: Record<RealmRank, string> = {
+  common: "#94a3b8",
+  uncommon: "#4ade80",
+  rare: "#38bdf8",
+  epic: "#c084fc",
+  legend: "#fbbf24",
+  myth: "#f87171",
 };
 
 const Treasures = () => (
@@ -28,28 +34,22 @@ const Treasures = () => (
         {treasures.map((t) => (
           <article
             key={t.id}
-            className="group jade-frame rounded-2xl p-6 text-center hover:shadow-aura hover:-translate-y-1 transition-all"
+            className="group jade-frame rounded-2xl overflow-hidden hover:shadow-aura hover:-translate-y-1 transition-all"
           >
-            <div className="relative w-32 h-32 mx-auto mb-4">
-              <div className="absolute inset-0 bg-gradient-aura animate-aura-pulse rounded-full" />
-              <img
-                src={typeIcon[t.type]}
-                alt={t.vietName}
-                width={128}
-                height={128}
-                loading="lazy"
-                className="relative w-full h-full object-contain animate-float"
-              />
-            </div>
-            <div className="flex justify-center gap-2 mb-3">
-              <span className="text-xs px-2 py-0.5 rounded-sm bg-primary/10 text-primary-deep font-display tracking-widest">
+            <div className="relative h-64 bg-gradient-to-b from-primary/10 via-transparent to-accent/10">
+              <Treasure3D kind={typeKind[t.type]} color={rankColor[t.rank]} className="absolute inset-0" />
+              <div className="absolute top-3 left-3 text-xs px-2 py-1 rounded bg-background/70 backdrop-blur text-primary-deep font-display tracking-widest">
                 {t.type.toUpperCase()}
-              </span>
-              <RankBadge rank={t.rank} />
+              </div>
+              <div className="absolute top-3 right-3">
+                <RankBadge rank={t.rank} />
+              </div>
             </div>
-            <div className="font-script text-2xl text-jade-aura mb-1">{t.name}</div>
-            <h3 className="font-display text-lg text-primary-deep mb-2">{t.vietName}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{t.description}</p>
+            <div className="p-5 text-center">
+              <div className="font-script text-2xl text-jade-aura mb-1">{t.name}</div>
+              <h3 className="font-display text-lg text-primary-deep mb-2">{t.vietName}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{t.description}</p>
+            </div>
           </article>
         ))}
       </div>

@@ -3,8 +3,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { cultivators } from "@/data/cultivation";
 import { Link } from "react-router-dom";
 import { Crown } from "lucide-react";
-import iconDharma from "@/assets/icon-dharma.png";
+import { DharmaAura } from "@/components/three/DharmaAura";
 
+const variants = ["gold", "jade", "crimson"] as const;
 const rankAura = ["from-rank-myth/30", "from-rank-legend/30", "from-rank-epic/30"];
 
 const Leaderboard = () => (
@@ -38,7 +39,9 @@ const Leaderboard = () => (
                   <span className="font-display text-3xl text-primary-deep">#{idx + 1}</span>
                 )}
               </div>
-              <img src={iconDharma} alt="" className="w-24 h-24 mx-auto mb-3 opacity-80 animate-float" />
+              <div className="w-32 h-32 mx-auto mb-3">
+                <DharmaAura variant={variants[displayIdx]} showCore={false} className="w-full h-full" />
+              </div>
               <h3 className={`font-display ${isFirst ? "text-2xl text-jade-aura" : "text-xl text-primary-deep"} mb-1`}>
                 {c.name}
               </h3>

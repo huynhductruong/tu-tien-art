@@ -5,20 +5,24 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroRealm from "@/assets/hero-realm.jpg";
 import iconBagua from "@/assets/icon-bagua.png";
-import iconSword from "@/assets/icon-sword.png";
-import iconScroll from "@/assets/icon-scroll.png";
-import iconBeast from "@/assets/icon-beast.png";
-import iconCauldron from "@/assets/icon-cauldron.png";
-import iconDharma from "@/assets/icon-dharma.png";
 import { realms, techniques } from "@/data/cultivation";
+import { Treasure3D, type TreasureKind } from "@/components/three/Treasure3D";
+import { DharmaAura } from "@/components/three/DharmaAura";
 
-const features = [
-  { icon: iconBagua, name: "Cảnh Giới", cn: "境界", desc: "Chín cảnh giới tu tiên, từ Luyện Khí đến Độ Kiếp.", to: "/canh-gioi" },
-  { icon: iconScroll, name: "Công Pháp", cn: "功法", desc: "Bí kíp tâm pháp lưu truyền vạn cổ.", to: "/cong-phap" },
-  { icon: iconSword, name: "Pháp Bảo", cn: "法寶", desc: "Thần binh lợi khí, vạn pháp đồng nguyên.", to: "/phap-bao" },
-  { icon: iconBeast, name: "Linh Thú", cn: "靈獸", desc: "Thượng cổ thần thú, đồng hành tu sĩ.", to: "/phap-bao" },
-  { icon: iconCauldron, name: "Đan Dược", cn: "丹藥", desc: "Tiên đan luyện hoá, cải mệnh đoạt thiên.", to: "/phap-bao" },
-  { icon: iconDharma, name: "Pháp Tướng", cn: "法相", desc: "Pháp tướng thiên địa, hiện thế kinh nhân.", to: "/tu-si" },
+const features: Array<{
+  kind: TreasureKind | "dharma";
+  color: string;
+  name: string;
+  cn: string;
+  desc: string;
+  to: string;
+}> = [
+  { kind: "bagua", color: "#34d399", name: "Cảnh Giới", cn: "境界", desc: "Chín cảnh giới tu tiên, từ Luyện Khí đến Độ Kiếp.", to: "/canh-gioi" },
+  { kind: "scroll", color: "#fcd34d", name: "Công Pháp", cn: "功法", desc: "Bí kíp tâm pháp lưu truyền vạn cổ.", to: "/cong-phap" },
+  { kind: "sword", color: "#34d399", name: "Pháp Bảo", cn: "法寶", desc: "Thần binh lợi khí, vạn pháp đồng nguyên.", to: "/phap-bao" },
+  { kind: "beast", color: "#a7f3d0", name: "Linh Thú", cn: "靈獸", desc: "Thượng cổ thần thú, đồng hành tu sĩ.", to: "/phap-bao" },
+  { kind: "pill", color: "#fbbf24", name: "Đan Dược", cn: "丹藥", desc: "Tiên đan luyện hoá, cải mệnh đoạt thiên.", to: "/phap-bao" },
+  { kind: "dharma", color: "#34d399", name: "Pháp Tướng", cn: "法相", desc: "Pháp tướng thiên địa, hiện thế kinh nhân.", to: "/tu-si" },
 ];
 
 const Index = () => (
@@ -100,20 +104,17 @@ const Index = () => (
           <Link
             key={f.name}
             to={f.to}
-            className="group relative jade-frame rounded-2xl p-7 hover:shadow-jade hover:-translate-y-1 transition-all duration-500"
+            className="group relative jade-frame rounded-2xl p-6 hover:shadow-jade hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             style={{ animationDelay: `${i * 80}ms` }}
           >
-            <div className="absolute inset-0 bg-gradient-aura opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-aura opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             <div className="relative">
-              <div className="w-20 h-20 mb-5 mx-auto flex items-center justify-center">
-                <img
-                  src={f.icon}
-                  alt={f.name}
-                  width={80}
-                  height={80}
-                  loading="lazy"
-                  className="w-full h-full object-contain group-hover:animate-aura-pulse"
-                />
+              <div className="h-44 mb-3 -mx-2">
+                {f.kind === "dharma" ? (
+                  <DharmaAura variant="jade" showCore={false} className="w-full h-full" />
+                ) : (
+                  <Treasure3D kind={f.kind} color={f.color} className="w-full h-full" />
+                )}
               </div>
               <div className="text-center">
                 <div className="font-script text-2xl text-primary mb-1">{f.cn}</div>

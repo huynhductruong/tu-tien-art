@@ -104,20 +104,17 @@ const Index = () => (
           <Link
             key={f.name}
             to={f.to}
-            className="group relative jade-frame rounded-2xl p-7 hover:shadow-jade hover:-translate-y-1 transition-all duration-500"
+            className="group relative jade-frame rounded-2xl p-6 hover:shadow-jade hover:-translate-y-1 transition-all duration-500 overflow-hidden"
             style={{ animationDelay: `${i * 80}ms` }}
           >
-            <div className="absolute inset-0 bg-gradient-aura opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-aura opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             <div className="relative">
-              <div className="w-20 h-20 mb-5 mx-auto flex items-center justify-center">
-                <img
-                  src={f.icon}
-                  alt={f.name}
-                  width={80}
-                  height={80}
-                  loading="lazy"
-                  className="w-full h-full object-contain group-hover:animate-aura-pulse"
-                />
+              <div className="h-44 mb-3 -mx-2">
+                {f.kind === "dharma" ? (
+                  <DharmaAura variant="jade" showCore={false} className="w-full h-full" />
+                ) : (
+                  <Treasure3D kind={f.kind} color={f.color} className="w-full h-full" />
+                )}
               </div>
               <div className="text-center">
                 <div className="font-script text-2xl text-primary mb-1">{f.cn}</div>

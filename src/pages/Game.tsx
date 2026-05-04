@@ -287,7 +287,7 @@ const Game = () => {
         {tab === "gacha" && (
           <section className="max-w-4xl mx-auto">
             <div className="jade-frame rounded-2xl p-8 text-center relative overflow-hidden">
-              <img src="/assets/img_6.gif" alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
+              <img src={dharmaPool[200]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
               <div className="relative">
                 <div className="font-script text-5xl text-jade-aura">召唤阵</div>
                 <div className="font-display tracking-[0.3em] text-primary-deep mt-2">TRIỆU HỒI PHÁP BẢO</div>

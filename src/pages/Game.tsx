@@ -194,7 +194,7 @@ const Game = () => {
                       >
                         {t ? (
                           <>
-                            <img src={t.gif} alt={t.name} className="w-full h-full object-contain" />
+                            <img src={t.src} alt={t.name} className="w-full h-full object-contain" />
                             <button
                               onClick={() => g.unequip(t.id)}
                               className="absolute top-0.5 right-0.5 text-xs bg-background/80 rounded px-1"
@@ -240,7 +240,7 @@ const Game = () => {
               <div className={cn("relative mx-auto mt-6 w-80 h-80 transition-transform", bossFlash && "scale-105")}>
                 <div className="absolute inset-0 rounded-full bg-destructive/10 blur-2xl" />
                 <img
-                  src={boss.gif}
+                  src={boss.src}
                   alt={boss.name}
                   className={cn("relative w-full h-full object-contain", bossFlash && "brightness-200")}
                 />
@@ -272,7 +272,7 @@ const Game = () => {
                 )}
                 {equipped.map((t) => (
                   <div key={t.id} className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50" style={{ borderLeft: `3px solid ${rarityColor[t.rarity]}` }}>
-                    <img src={t.gif} alt={t.name} className="w-12 h-12 object-contain" />
+                    <img src={t.src} alt={t.name} className="w-12 h-12 object-contain" />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-display truncate">{t.name}</div>
                       <div className="text-xs" style={{ color: rarityColor[t.rarity] }}>{rarityLabel[t.rarity]} · +{t.power} ATK</div>
@@ -320,7 +320,7 @@ const Game = () => {
                         className="aspect-square rounded-lg border-2 p-2 bg-secondary/50 animate-rise relative"
                         style={{ borderColor: rarityColor[t.rarity], animationDelay: `${i * 50}ms` }}
                       >
-                        <img src={t.gif} alt={t.name} className="w-full h-full object-contain" />
+                        <img src={t.src} alt={t.name} className="w-full h-full object-contain" />
                         <div className="absolute bottom-0 inset-x-0 text-[10px] font-display text-center py-0.5 backdrop-blur bg-background/70">
                           <div className="truncate px-1">{t.name}</div>
                           <div style={{ color: rarityColor[t.rarity] }}>{rarityLabel[t.rarity]}</div>
@@ -366,7 +366,7 @@ const Game = () => {
                       style={{ borderColor: rarityColor[t.rarity] }}
                     >
                       <div className="aspect-square">
-                        <img src={t.gif} alt={t.name} className="w-full h-full object-contain" />
+                        <img src={t.src} alt={t.name} className="w-full h-full object-contain" />
                       </div>
                       <div className="text-xs font-display mt-1 truncate">{t.name}</div>
                       <div className="text-[10px]" style={{ color: rarityColor[t.rarity] }}>

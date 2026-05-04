@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useGame } from "@/store/game";
-import { allTreasures, bosses, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
+import { allTreasures, bosses, dharmaPool, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
 import { cn } from "@/lib/utils";
 
 const fmt = (n: number) => {
@@ -133,14 +133,14 @@ const Game = () => {
                 }}
               >
                 <img
-                  src="/assets/img_0.gif"
+                  src={dharmaPool[(g.realmIdx * 37) % dharmaPool.length]}
                   alt="Pháp tướng"
                   className="absolute inset-0 w-full h-full object-contain animate-aura-pulse pointer-events-none"
                 />
                 <img
-                  src="/assets/img_3.gif"
+                  src={dharmaPool[(g.realmIdx * 37 + 13) % dharmaPool.length]}
                   alt="Tu sĩ"
-                  className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-contain pointer-events-none"
+                  className="absolute inset-6 w-[calc(100%-3rem)] h-[calc(100%-3rem)] object-contain pointer-events-none mix-blend-screen"
                 />
                 {floaters.map((f) => (
                   <span
@@ -194,7 +194,7 @@ const Game = () => {
                       >
                         {t ? (
                           <>
-                            <img src={t.gif} alt={t.name} className="w-full h-full object-contain" />
+                            <img src={t.src} alt={t.name} className="w-full h-full object-contain" />
                             <button
                               onClick={() => g.unequip(t.id)}
                               className="absolute top-0.5 right-0.5 text-xs bg-background/80 rounded px-1"
@@ -240,7 +240,7 @@ const Game = () => {
               <div className={cn("relative mx-auto mt-6 w-80 h-80 transition-transform", bossFlash && "scale-105")}>
                 <div className="absolute inset-0 rounded-full bg-destructive/10 blur-2xl" />
                 <img
-                  src={boss.gif}
+                  src={boss.src}
                   alt={boss.name}
                   className={cn("relative w-full h-full object-contain", bossFlash && "brightness-200")}
                 />
@@ -272,7 +272,7 @@ const Game = () => {
                 )}
                 {equipped.map((t) => (
                   <div key={t.id} className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50" style={{ borderLeft: `3px solid ${rarityColor[t.rarity]}` }}>
-                    <img src={t.gif} alt={t.name} className="w-12 h-12 object-contain" />
+                    <img src={t.src} alt={t.name} className="w-12 h-12 object-contain" />
                     <div className="flex-1 min-w-0">
                       <div className="text-sm font-display truncate">{t.name}</div>
                       <div className="text-xs" style={{ color: rarityColor[t.rarity] }}>{rarityLabel[t.rarity]} · +{t.power} ATK</div>
@@ -287,7 +287,7 @@ const Game = () => {
         {tab === "gacha" && (
           <section className="max-w-4xl mx-auto">
             <div className="jade-frame rounded-2xl p-8 text-center relative overflow-hidden">
-              <img src="/assets/img_6.gif" alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
+              <img src={dharmaPool[200]} alt="" className="absolute inset-0 w-full h-full object-cover opacity-10" />
               <div className="relative">
                 <div className="font-script text-5xl text-jade-aura">召唤阵</div>
                 <div className="font-display tracking-[0.3em] text-primary-deep mt-2">TRIỆU HỒI PHÁP BẢO</div>
@@ -320,7 +320,7 @@ const Game = () => {
                         className="aspect-square rounded-lg border-2 p-2 bg-secondary/50 animate-rise relative"
                         style={{ borderColor: rarityColor[t.rarity], animationDelay: `${i * 50}ms` }}
                       >
-                        <img src={t.gif} alt={t.name} className="w-full h-full object-contain" />
+                        <img src={t.src} alt={t.name} className="w-full h-full object-contain" />
                         <div className="absolute bottom-0 inset-x-0 text-[10px] font-display text-center py-0.5 backdrop-blur bg-background/70">
                           <div className="truncate px-1">{t.name}</div>
                           <div style={{ color: rarityColor[t.rarity] }}>{rarityLabel[t.rarity]}</div>
@@ -366,7 +366,7 @@ const Game = () => {
                       style={{ borderColor: rarityColor[t.rarity] }}
                     >
                       <div className="aspect-square">
-                        <img src={t.gif} alt={t.name} className="w-full h-full object-contain" />
+                        <img src={t.src} alt={t.name} className="w-full h-full object-contain" />
                       </div>
                       <div className="text-xs font-display mt-1 truncate">{t.name}</div>
                       <div className="text-[10px]" style={{ color: rarityColor[t.rarity] }}>

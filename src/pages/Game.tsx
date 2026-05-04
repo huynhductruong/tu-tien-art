@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useGame } from "@/store/game";
-import { allTreasures, bosses, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
+import { allTreasures, bosses, dharmaPool, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
 import { cn } from "@/lib/utils";
 
 const fmt = (n: number) => {

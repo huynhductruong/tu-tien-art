@@ -133,14 +133,14 @@ const Game = () => {
                 }}
               >
                 <img
-                  src="/assets/img_0.gif"
+                  src={dharmaPool[(g.realmIdx * 37) % dharmaPool.length]}
                   alt="Pháp tướng"
                   className="absolute inset-0 w-full h-full object-contain animate-aura-pulse pointer-events-none"
                 />
                 <img
-                  src="/assets/img_3.gif"
+                  src={dharmaPool[(g.realmIdx * 37 + 13) % dharmaPool.length]}
                   alt="Tu sĩ"
-                  className="absolute inset-4 w-[calc(100%-2rem)] h-[calc(100%-2rem)] object-contain pointer-events-none"
+                  className="absolute inset-6 w-[calc(100%-3rem)] h-[calc(100%-3rem)] object-contain pointer-events-none mix-blend-screen"
                 />
                 {floaters.map((f) => (
                   <span

@@ -46,16 +46,17 @@ export interface Treasure {
   vietName: string;
   type: "Pháp Bảo" | "Linh Thú" | "Đan Dược" | "Pháp Khí";
   rank: RealmRank;
+  level: number;
   description: string;
 }
 
 export const treasures: Treasure[] = [
-  { id: "1", name: "青鋒劍", vietName: "Thanh Phong Kiếm", type: "Pháp Bảo", rank: "legend", description: "Cổ kiếm ngàn năm, kiếm khí xanh biếc xuyên thiên." },
-  { id: "2", name: "九尾靈狐", vietName: "Cửu Vĩ Linh Hồ", type: "Linh Thú", rank: "myth", description: "Linh thú thượng cổ, tinh thông huyễn thuật mê người." },
-  { id: "3", name: "返魂丹", vietName: "Phản Hồn Đan", type: "Đan Dược", rank: "epic", description: "Cải tử hoàn sinh, một viên cứu một mạng." },
-  { id: "4", name: "乾坤袋", vietName: "Càn Khôn Đại", type: "Pháp Khí", rank: "rare", description: "Bên trong chứa một thế giới, cất giữ vạn vật." },
-  { id: "5", name: "玄武甲", vietName: "Huyền Vũ Giáp", type: "Pháp Bảo", rank: "epic", description: "Giáp trụ cổ xưa hoá từ vảy huyền vũ thần thú." },
-  { id: "6", name: "白鶴童子", vietName: "Bạch Hạc Đồng Tử", type: "Linh Thú", rank: "rare", description: "Hạc tiên thông linh, cưỡi mây vượt vạn dặm." },
+  { id: "1", name: "青鋒劍", vietName: "Thanh Phong Kiếm", type: "Pháp Bảo", rank: "legend", level: 450, description: "Cổ kiếm ngàn năm, kiếm khí xanh biếc xuyên thiên." },
+  { id: "2", name: "九尾靈狐", vietName: "Cửu Vĩ Linh Hồ", type: "Linh Thú", rank: "myth", level: 520, description: "Linh thú thượng cổ, tinh thông huyễn thuật mê người." },
+  { id: "3", name: "返魂丹", vietName: "Phản Hồn Đan", type: "Đan Dược", rank: "epic", level: 430, description: "Cải tử hoàn sinh, một viên cứu một mạng." },
+  { id: "4", name: "乾坤袋", vietName: "Càn Khôn Đại", type: "Pháp Khí", rank: "rare", level: 380, description: "Bên trong chứa một thế giới, cất giữ vạn vật." },
+  { id: "5", name: "玄武甲", vietName: "Huyền Vũ Giáp", type: "Pháp Bảo", rank: "epic", level: 420, description: "Giáp trụ cổ xưa hoá từ vảy huyền vũ thần thú." },
+  { id: "6", name: "白鶴童子", vietName: "Bạch Hạc Đồng Tử", type: "Linh Thú", rank: "rare", level: 360, description: "Hạc tiên thông linh, cưỡi mây vượt mây vượt dặm." },
 ];
 
 export interface Cultivator {

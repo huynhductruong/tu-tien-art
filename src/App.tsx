@@ -3,12 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import Realms from "./pages/Realms.tsx";
-import Techniques from "./pages/Techniques.tsx";
-import Treasures from "./pages/Treasures.tsx";
-import Leaderboard from "./pages/Leaderboard.tsx";
-import Profile from "./pages/Profile.tsx";
+import Game from "./pages/Game.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -20,13 +15,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/canh-gioi" element={<Realms />} />
-          <Route path="/cong-phap" element={<Techniques />} />
-          <Route path="/phap-bao" element={<Treasures />} />
-          <Route path="/bang-xep-hang" element={<Leaderboard />} />
-          <Route path="/tu-si" element={<Profile />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/" element={<Game />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

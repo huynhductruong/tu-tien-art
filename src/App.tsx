@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Game from "./pages/Game.tsx";
+import CardGame from "./pages/CardGame.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -16,6 +17,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Game />} />
+          <Route path="/cards" element={<CardGame />} />
+          <Route path="/cards/:code" element={<CardGame />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

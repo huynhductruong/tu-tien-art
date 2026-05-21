@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { useGame } from "@/store/game";
 import { allTreasures, bosses, dharmaPool, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
 import { cn } from "@/lib/utils";

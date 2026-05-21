@@ -123,7 +123,7 @@ const CardGame = () => {
     const c = joinCode.trim().toUpperCase();
     const { data } = await supabase.from("card_rooms").select("state, status").eq("code", c).maybeSingle();
     if (!data) return alert("Không tìm thấy phòng!");
-    const s = data.state as GameState;
+    const s = data.state as unknown as GameState;
     if (s.phase !== "lobby") return alert("Phòng đã bắt đầu!");
     if (s.players.length >= 6) return alert("Phòng đã đầy!");
     if (!s.players.some((p) => p.id === clientId)) {

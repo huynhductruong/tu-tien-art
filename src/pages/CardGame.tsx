@@ -84,7 +84,7 @@ const CardGame = () => {
     let alive = true;
     const load = async () => {
       const { data } = await supabase.from("card_rooms").select("state").eq("code", c).maybeSingle();
-      if (alive && data) setState(data.state as GameState);
+      if (alive && data) setState(data.state as unknown as GameState);
     };
     load();
     const ch = supabase

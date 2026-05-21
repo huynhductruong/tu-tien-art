@@ -91,6 +91,9 @@ const Game = () => {
             <Stat label="灵气" value={fmt(g.qi)} accent="jade" />
             <Stat label="灵石" value={fmt(g.spiritStones)} accent="gold" />
             <Stat label="战力" value={fmt(realm.power + equipped.reduce((s, t) => s + t.power, 0))} accent="jade" />
+            <Link to="/cards" className="ml-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-accent-gold to-accent-gold-deep text-white font-display text-xs tracking-widest shadow-gold hover:scale-105 transition-transform">
+              ⚔ ĐẤU PHÁP
+            </Link>
           </div>
         </div>
         <nav className="container flex gap-1 pb-2 overflow-x-auto">

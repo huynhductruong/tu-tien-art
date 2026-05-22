@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGame } from "@/store/game";
 import { allTreasures, bosses, dharmaPool, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
 import { cn } from "@/lib/utils";
+import { CultivationWorld } from "@/components/game/CultivationWorld";
 
 const fmt = (n: number) => {
   if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";

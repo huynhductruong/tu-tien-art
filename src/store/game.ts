@@ -16,6 +16,7 @@ interface GameState {
   totalRolls: number;
 
   click: () => void;
+  gainQi: (amount: number) => void;
   tick: () => void;
   breakthrough: () => boolean;
   attackBoss: () => { dmg: number; killed: boolean };

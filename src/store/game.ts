@@ -60,6 +60,9 @@ export const useGame = create<GameState>()(
         set({ qi: s.qi + gain, totalClicks: s.totalClicks + 1 });
       },
 
+      gainQi: (amount) => set({ qi: get().qi + amount }),
+
+
       tick: () => {
         const s = get();
         if (s.autoQi > 0) set({ qi: s.qi + s.autoQi });

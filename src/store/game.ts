@@ -16,6 +16,7 @@ interface GameState {
   totalRolls: number;
 
   click: () => void;
+  gainQi: (amount: number) => void;
   tick: () => void;
   breakthrough: () => boolean;
   attackBoss: () => { dmg: number; killed: boolean };
@@ -58,6 +59,9 @@ export const useGame = create<GameState>()(
         const gain = s.clickPower + Math.floor(realms[s.realmIdx].power / 5);
         set({ qi: s.qi + gain, totalClicks: s.totalClicks + 1 });
       },
+
+      gainQi: (amount) => set({ qi: get().qi + amount }),
+
 
       tick: () => {
         const s = get();

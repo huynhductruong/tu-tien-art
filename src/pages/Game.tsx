@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGame } from "@/store/game";
 import { allTreasures, bosses, dharmaPool, realms, rarityColor, rarityLabel, type Treasure } from "@/data/game";
 import { cn } from "@/lib/utils";
+import { CultivationWorld } from "@/components/game/CultivationWorld";
 
 const fmt = (n: number) => {
   if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";
@@ -122,66 +123,10 @@ const Game = () => {
       <main className="container py-6">
         {tab === "tu-luyen" && (
           <section className="grid lg:grid-cols-3 gap-6">
-            {/* Click area */}
-            <div className="lg:col-span-2 jade-frame rounded-2xl p-6 relative overflow-hidden">
-              <div className="text-center mb-4">
-                <div className="font-script text-5xl text-jade-aura">{realm.cn}</div>
-                <div className="font-display tracking-[0.3em] text-primary-deep mt-1">{realm.vietName.toUpperCase()}</div>
-              </div>
-
-              <div
-                onClick={handleClick}
-                className="relative mx-auto w-72 h-72 rounded-full cursor-pointer select-none active:scale-95 transition-transform"
-                style={{
-                  background: `radial-gradient(circle, hsl(var(--primary)/0.4), transparent 70%)`,
-                }}
-              >
-                <img
-                  src={dharmaPool[(g.realmIdx * 37) % dharmaPool.length]}
-                  alt="Pháp tướng"
-                  className="absolute inset-0 w-full h-full object-contain animate-aura-pulse pointer-events-none"
-                />
-                <img
-                  src={dharmaPool[(g.realmIdx * 37 + 13) % dharmaPool.length]}
-                  alt="Tu sĩ"
-                  className="absolute inset-6 w-[calc(100%-3rem)] h-[calc(100%-3rem)] object-contain pointer-events-none mix-blend-screen"
-                />
-                {floaters.map((f) => (
-                  <span
-                    key={f.id}
-                    className="absolute pointer-events-none font-display text-accent-gold-deep text-lg animate-rise"
-                    style={{ left: f.x, top: f.y }}
-                  >
-                    {f.text}
-                  </span>
-                ))}
-              </div>
-
-              <div className="text-center text-xs text-muted-foreground mt-4">
-                Bấm để hấp thu linh khí · +{fmt(g.clickPower + Math.floor(realm.power / 5))}/click · auto +{fmt(g.autoQi)}/s
-              </div>
-
-              {/* Progress */}
-              <div className="mt-6">
-                <div className="flex justify-between text-xs font-display mb-1">
-                  <span className="text-primary-deep">{realm.vietName} → {realms[Math.min(g.realmIdx + 1, realms.length - 1)].vietName}</span>
-                  <span className="text-muted-foreground">{fmt(g.qi)} / {fmt(nextNeed)}</span>
-                </div>
-                <div className="h-3 rounded-full bg-muted overflow-hidden border border-primary/20">
-                  <div
-                    className="h-full bg-gradient-jade transition-all"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-                <button
-                  disabled={g.qi < nextNeed || g.realmIdx >= realms.length - 1}
-                  onClick={() => g.breakthrough()}
-                  className="w-full mt-3 py-3 rounded-lg bg-gradient-to-r from-accent-gold to-accent-gold-deep text-white font-display tracking-[0.3em] text-sm disabled:opacity-30 disabled:cursor-not-allowed hover:shadow-gold transition-all"
-                >
-                  渡劫 · ĐỘT PHÁ CẢNH GIỚI
-                </button>
-              </div>
+            <div className="lg:col-span-2">
+              <CultivationWorld />
             </div>
+
 
             {/* Equipped sidebar */}
             <aside className="space-y-4">
